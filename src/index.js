@@ -1,5 +1,6 @@
-import express from 'express'
-const app = express();
+// import express from 'express'
+// const app = express();
+import { app } from './app.js';
 import dotenv from 'dotenv'
 import connectDB from './db/index.js';
 
@@ -13,26 +14,17 @@ const port = process.env.PORT;
 
 // MONGO DB connection:
 
-connectDB();
-
-
-
-// ; (async () => {
-//     try {
-//         await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
-//         console.log("connected")
-//         app.on("error", (err) => {
-//             console.log(err, "err occured");
-//             throw err
-//         })
-
-
-//     } catch (error) {
-//         console.error(error);
-//         throw error
-
-//     }
-// })()
+connectDB()
+    .then(app.listen(port || 8080, () => {
+        console.log(`Server is running on port: ${port}`)
+        app.on("err", (err) => {
+            console.log(`database error: `, err);
+            throw err;
+        })
+    }))
+    .catch((error) => {
+        console.log(error)
+    })
 
 
 
@@ -42,6 +34,3 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`)
-})
