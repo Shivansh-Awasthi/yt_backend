@@ -1,0 +1,23 @@
+{
+  "name": "youtube_backend",
+  "version": "1.0.0",
+  "description": "a yt backend using MERN stack",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Shivansh Awasthi",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.4",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3"
+  }
+}
